@@ -1,26 +1,10 @@
 from fastapi import FastAPI
 from modelo import NoteIn, NoteOut, Notes
 from fastapi.middleware.cors import CORSMiddleware
-from starlette.middleware.base import BaseHTTPMiddleware
-from starlette.requests import Request
-
-# Definimos el Middleware
-class ProxyHeadersMiddleware(BaseHTTPMiddleware):
-    async def dispatch(self, request: Request, call_next):
-        
-        forwarded_proto = request.headers.get('X-Forwarded-Proto') 
-        
-        if forwarded_proto == 'httpss':
-            request.scope['scheme'] = 'httpss'
-            
-        response = await call_next(request)
-        return response
-
 
 app = FastAPI()
 
 app.add_middleware(
-    ProxyHeadersMiddleware,
     CORSMiddleware,
     allow_origins=["*"],       # Permite todos los orígenes
     allow_credentials=True,    # Permite cookies y credenciales
