@@ -20,7 +20,7 @@ export const Notes = () => {
 
     const fetchNotes = async () => {
       try {
-        const response = await fetch(`${restApi.url}:${restApi.port}/${user.name}`);
+        const response = await fetch(`${restApi.url}${restApi.port}/${user.name}`);
         const data = await response.json();
         if (isActive) {
           setNotes(data);

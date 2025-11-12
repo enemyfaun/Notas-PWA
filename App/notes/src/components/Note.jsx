@@ -18,7 +18,7 @@ export const Note = () => {
       }
 
       try {
-        const response = await fetch(`${restApi.url}:${restApi.port}/${user.name}/${noteId}`);
+        const response = await fetch(`${restApi.url}${restApi.port}/${user.name}/${noteId}`);
         const data = await response.json();
         setNoteData(data);
       } catch (error) {
@@ -41,7 +41,7 @@ export const Note = () => {
     const note = document.getElementById('note').value;
     if (!title || !note) return;
     try {
-      const response = await fetch(`${restApi.url}:${restApi.port}/${user.name}/${noteId !== 'new' ? noteId : ''}`, {
+      const response = await fetch(`${restApi.url}${restApi.port}/${user.name}/${noteId !== 'new' ? noteId : ''}`, {
         method: noteId === 'new' ? 'POST' : 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ export const Note = () => {
   const handleDeleteNote = async () => {
     if (noteId !== 'new') {
     try {
-            const response = await fetch(`${restApi.url}:${restApi.port}/${user.name}/${noteId}`, {
+            const response = await fetch(`${restApi.url}${restApi.port}/${user.name}/${noteId}`, {
                 method: 'DELETE',
             });
             if (!response.ok) {
