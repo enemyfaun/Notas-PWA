@@ -6,7 +6,7 @@ export const UserProvider = ({ children }) => {
 
   const login = (username) => setUser({ name: username })
   const logout = () => setUser(null)
-  const restApi = { url: 'https://notas-api-96641240377.northamerica-south1.run.app', port: '' }
+  const restApi = { url: 'https://app-notas-pwa-953307761535.northamerica-south1.run.app', port: '' }
 
   return (
     <UserContext.Provider value={{ user, login, logout, restApi }}>
